@@ -1,14 +1,61 @@
-# Welcome to your CDK TypeScript project
+# AWS Landing Zone with MongoDB Atlas 
 
-This is a blank project for CDK development with TypeScript.
+## Introduction
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+AWS Landing Zone is a solution that helps enterprises quickly set up a secure, multi-account AWS environment based on best practices. With AWS Landing Zone, enterprises can easily manage multiple AWS accounts, enforce security and compliance policies, and streamline resource provisioning. By leveraging AWS Landing Zone, enterprises can accelerate their cloud adoption journey and ensure a consistent and secure infrastructure across their organization.
 
-## Useful commands
+This repository enables developers to setup a standard AWS Landing Zone with MongoDB Atlas.
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+## Usage
+
+Developers can use this repository as a starting point for CDK development with TypeScript. It provides a blank project with the necessary setup to create an AWS Landing Zone with a VPC, Subnet, Routes , Security Group , CloudWatch and integrate it with MongoDB Atlas.
+
+## Features
+
+- CDK development with TypeScript
+- Standard AWS Landing Zone setup
+- Integration with MongoDB Atlas
+
+## Prerequisite
+
+- MongoDB Organization access
+- AWS Account
+- AWS CDK
+
+## Solution Architecture
+
+## Deployment Steps
+
+### Step 1 : Set up the MongoDB Atlas Organization API access
+
+Login to the MongoDB Atlas
+Create a Organization Access through API
+
+### Step 2: Git clone
+
+Git clone the repository
+
+### Step 3: Update the parameters
+
+Update the parameters
+
+### Step 4: CDK Deployment
+
+Deploy the components
+
+### Step 5: Testing
+
+Validate the components
+
+
+## Conclusion
+
+
+
+## License
+
+This repository is licensed under the MIT License.
+
+
+
+
