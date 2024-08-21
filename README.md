@@ -24,6 +24,8 @@ Developers can use this repository as a starting point for CDK development with 
 
 ## Solution Architecture
 
+![LandingZone](images/landing_zone.png)
+
 ## Deployment Steps
 
 ### Step 1 : Set up the MongoDB Atlas Organization API access
