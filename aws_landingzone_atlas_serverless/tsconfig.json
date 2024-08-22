@@ -26,6 +26,6 @@
   },
   "exclude": [
     "node_modules",
-    "cdk.out"
+    "aws_landingzone_atlas_serverless/cdk.out"
   ]
 }
