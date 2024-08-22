@@ -43,7 +43,7 @@ type AccountConfig = {
 }
 
 const MyAccount: AccountConfig = {
-  orgId: '12343434', //update with your Atlas Org ID 
+  orgId: process.env.ATLAS_ORG_ID || 'defaultOrgId', // update with your Atlas Org ID 
 };
 
 const MONGODB_PROFILE_NAME = 'development';
@@ -54,7 +54,7 @@ const MONGODB_PROFILE_NAME = 'development';
 
 const serverlessStack = new AtlasServerlessBasicStack(app, 'atlas-serverless-basic-stack', {
   env,
-  ipAccessList: '0.0.0.0',  //input your static IP Address from NAT Gateway
+  ipAccessList: process.env.IP_ACCESS_LIST || '0.0.0.0',  // input your static IP Address from NAT Gateway
   profile: MONGODB_PROFILE_NAME,
   ...MyAccount,
 });
