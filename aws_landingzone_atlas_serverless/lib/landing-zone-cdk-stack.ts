@@ -5,6 +5,7 @@ import * as iam from 'aws-cdk-lib/aws-iam';
 
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs'
+import { v4 as uuidv4 } from 'uuid';
 
 import {
   MongoAtlasBootstrap,
@@ -28,7 +29,7 @@ import {
 import { SubnetType } from 'aws-cdk-lib/aws-ec2';
 
 
-
+// This script will help you deploy a serverless atlas cluster
 
 export class MyLandingZoneStack extends cdk.Stack {
 
@@ -90,23 +91,23 @@ export class MyLandingZoneStack extends cdk.Stack {
 
     // add a mongodb atlas bootstrap
 
-    class AtlasBootstrapExample extends cdk.Stack {
-      constructor (scope: Construct, id: string, props?: cdk.StackProps) {
-        super(scope, id, props)
+    // class AtlasBootstrapExample extends cdk.Stack {
+    //   constructor (scope: Construct, id: string, props?: cdk.StackProps) {
+    //     super(scope, id, props)
     
-        const roleName = 'MongoDB-Atlas-CDK-Excecution'
-        const mongoDBProfile = 'development'   
+    //     const roleName = 'MongoDB-Atlas-CDK-Excecution'
+    //     const mongoDBProfile = 'development'   
     
-        const bootstrapProperties: MongoAtlasBootstrapProps = {
-          roleName: roleName,
-          secretProfile: mongoDBProfile,
-          typesToActivate: ['ServerlessInstance', ...AtlasBasicResources]
+    //     const bootstrapProperties: MongoAtlasBootstrapProps = {
+    //       roleName: roleName,
+    //       secretProfile: mongoDBProfile,
+    //       typesToActivate: ['ServerlessInstance', ...AtlasBasicResources]
 
-        }
+    //     }
     
-        new MongoAtlasBootstrap(this, 'mongodb-atlascdk-bootstrap', bootstrapProperties)
-      }
-    }
+    //     new MongoAtlasBootstrap(this, 'mongodb-atlascdk-bootstrap', bootstrapProperties)
+    //   }
+    // }
 
 
     // Add User Data to configure CloudWatch Logs
@@ -167,9 +168,7 @@ export class AtlasServerlessBasicStack extends Stack {
   constructor(scope: Construct, id: string, props: AtlasServerlessBasicStackProps) {
     super(scope, id, props);
 
-    const stack = Stack.of(this);
-    //const projectName = `${stack.stackName}-proj-lz`;
-    const projectName = 'demo-aws-landing-zone'
+    const projectName = "LZ-Atlas-Serverless";
 
     const dbuserSecret = new secretsmanager.Secret(this, 'DatabaseUserSecret', {
       generateSecretString: {
@@ -186,6 +185,7 @@ export class AtlasServerlessBasicStack extends Stack {
     const basic = new AtlasServerlessBasic(this, 'serverless-basic', {
       serverlessProps: {
         profile: props.profile,
+        name: "ServerlessCluster",
         providerSettings: {
           providerName: ServerlessInstanceProviderSettingsProviderName.SERVERLESS,
           regionName: 'US_EAST_1',
