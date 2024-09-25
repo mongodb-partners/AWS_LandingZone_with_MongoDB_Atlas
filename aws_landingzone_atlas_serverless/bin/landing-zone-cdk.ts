@@ -4,8 +4,8 @@ import * as cdk from 'aws-cdk-lib';
 // import { MyLandingZoneStack } from '../lib/landing-zone-cdk-stack';
 
 // import { AtlasServerlessBasicStack , AtlasBootstrapExample, MyLandingZoneStack} from '../lib/landing-zone-cdk-stack';
-import { AtlasBasicStack, AtlasBootstrapExample, MyLandingZoneStack } from "../lib/landing-zone-cdk-atlas-basic";
-// import { AtlasBootstrapExample, MyLandingZoneStack, AtlasPrivateEndpointStack } from  "../lib/landing-zone-cdk-atlas-private-endpoint"
+// import { AtlasBasicStack, AtlasBootstrapExample, MyLandingZoneStack } from "../lib/landing-zone-cdk-atlas-basic";
+import { AtlasBootstrapExample, MyLandingZoneStack, AtlasPrivateEndpointStack } from  "../lib/landing-zone-cdk-atlas-private-endpoint"
 
 // import { MongoAtlasBootstrap } from "../index"
 
@@ -54,18 +54,18 @@ const MONGODB_PROFILE_NAME = 'development';
 
 // MongoDB Atlas Basic Stack
 
-const basicStack = new AtlasBasicStack(app, 'atlas-basic-stack', {
-  env,
-  ip: process.env.IP_ACCESS_LIST || '0.0.0.0/0',  // input your static IP Address from NAT Gateway
-  profile: MONGODB_PROFILE_NAME,
-  ...MyAccount,
-});
-
-// MongoDB Atlas Private Endpoint Stack
-
-// const pvtEndpoint = new AtlasPrivateEndpointStack(app, 'atlas-private-endpoint-stack', lz, {
+// const basicStack = new AtlasBasicStack(app, 'atlas-basic-stack', {
 //   env,
 //   ip: process.env.IP_ACCESS_LIST || '0.0.0.0/0',  // input your static IP Address from NAT Gateway
 //   profile: MONGODB_PROFILE_NAME,
 //   ...MyAccount,
 // });
+
+// MongoDB Atlas Private Endpoint Stack
+
+const pvtEndpoint = new AtlasPrivateEndpointStack(app, 'atlas-private-endpoint-stack', lz, {
+  env,
+  ip: process.env.IP_ACCESS_LIST || '0.0.0.0/0',  // input your static IP Address from NAT Gateway
+  profile: MONGODB_PROFILE_NAME,
+  ...MyAccount,
+});
