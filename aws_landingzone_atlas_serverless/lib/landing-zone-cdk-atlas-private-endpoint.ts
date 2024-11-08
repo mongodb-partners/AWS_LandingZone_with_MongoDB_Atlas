@@ -182,13 +182,13 @@ export class AtlasPrivateEndpointStack extends cdk.Stack {
     // const vpcId = this.node.tryGetContext('vpcId') ?? "null";
     // const subnetId = this.node.tryGetContext('subnetId') ?? "null";
     const atlasProps = this.getContextProps()
-    // new secretsmanager.Secret(this, "DatabaseUserSecret", {
-    //   generateSecretString: {
-    //     secretStringTemplate: JSON.stringify({ username: "db-user" }),
-    //     generateStringKey: "password",
-    //     excludeCharacters: "%+~`#$&*()|[]{}:;<>?!'/@\"\\=-.,",
-    //   },
-    // });
+    new secretsmanager.Secret(this, "DatabaseUserSecret", {
+      generateSecretString: {
+        secretStringTemplate: JSON.stringify({ username: "db-user" }),
+        generateStringKey: "password",
+        excludeCharacters: "%+~`#$&*()|[]{}:;<>?!'/@\"\\=-.,",
+      },
+    });
 
     new AtlasBasicPrivateEndpoint(this, 'AtlasBasic', {
       atlasBasicProps: {
@@ -238,8 +238,8 @@ export class AtlasPrivateEndpointStack extends cdk.Stack {
     const clusterName = this.node.tryGetContext('clusterName') ?? 'AtlasPvtEndpoint';
     const region = this.node.tryGetContext('region') ?? "US_EAST_1";
     const ip = this.node.tryGetContext('ip') ?? "0.0.0.0/0";
-    const vpcId = this.node.tryGetContext('vpcId') ?? "vpc-036d5aeb4f5ef4981";
-    const subnetId = this.node.tryGetContext('subnetId') ?? "subnet-05313e5bc47a0d628";
+    const vpcId = this.node.tryGetContext('vpcId') ?? "<ENTER YOUR VPC ID>";
+    const subnetId = this.node.tryGetContext('subnetId') ?? "<ENTER YOUR SUBNET ID(s)>";
 
     return {
       orgId,
