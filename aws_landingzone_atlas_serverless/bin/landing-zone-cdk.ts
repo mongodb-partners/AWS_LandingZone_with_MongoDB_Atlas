@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-// import { MyLandingZoneStack } from '../lib/landing-zone-cdk-stack';
 
+// UNCOMMENT THIS LINE IF YOU WANT TO DEPLOY AWS LANDING ZONE WITH ATLAS SERVERLESS CLUSTER
 // import { AtlasServerlessBasicStack , AtlasBootstrapExample, MyLandingZoneStack} from '../lib/landing-zone-cdk-stack';
-// import { AtlasBasicStack, AtlasBootstrapExample, MyLandingZoneStack } from "../lib/landing-zone-cdk-atlas-basic";
-import { AtlasPrivateEndpointStack, MyLandingZoneStack, AtlasBootstrapExample } from  "../lib/landing-zone-cdk-atlas-private-endpoint"
-// import { AtlasBootstrapExample, MyLandingZoneStack, AtlasPrivateEndpointStack } from  "../lib/landing-zone-atlas-cfn-resources"
 
+// UNCOMMENT THIS LINE IF YOU WANT TO DEPLOY AWS LANDING ZONE WITH ATLAS BASIC CLUSTER
+// import { AtlasBasicStack, AtlasBootstrapExample, MyLandingZoneStack } from "../lib/landing-zone-cdk-atlas-basic";
+
+// UNCOMMENT THIS LINE IF YOU WANT TO DEPLOY AWS LANDING ZONE WITH ATLAS PRIVATE ENDPOINT
+import { AtlasPrivateEndpointStack, MyLandingZoneStack, AtlasBootstrapExample } from  "../lib/landing-zone-cdk-atlas-private-endpoint"
 
 // import { MongoAtlasBootstrap } from "../index"
 
@@ -45,7 +47,7 @@ const MyAccount: AccountConfig = {
 
 const MONGODB_PROFILE_NAME = 'development';
 
-// MongoDB Atlas Serverless Stack
+// UNCOMMENT THIS SECTION IF YOU WANT TO DEPLOY AWS LANDING ZONE WITH ATLAS SERVERLESS CLUSTER
 
 // const serverlessStack = new AtlasServerlessBasicStack(app, 'atlas-serverless-basic-stack', {
 //   env,
@@ -54,7 +56,7 @@ const MONGODB_PROFILE_NAME = 'development';
 //   ...MyAccount,
 // });
 
-// MongoDB Atlas Basic Stack
+// UNCOMMENT THIS SECTION IF YOU WANT TO DEPLOY AWS LANDING ZONE WITH ATLAS BASIC CLUSTER
 
 // const basicStack = new AtlasBasicStack(app, 'atlas-basic-stack', {
 //   env,
@@ -63,13 +65,7 @@ const MONGODB_PROFILE_NAME = 'development';
 //   ...MyAccount,
 // });
 
-// MongoDB Atlas Private Endpoint Stack using L3 resources
+// UNCOMMENT THIS SECTION IF YOU WANT TO DEPLOY AWS LANDING ZONE WITH ATLAS PRIVATE ENDPOINT
 const pvtEndpoint = new AtlasPrivateEndpointStack(app, 'atlas-private-endpoint-stack', {
     env
 });
-
-// MongoDB Atlas Private Endpoint Stack using individual CFN resources
-
-// const pvtEndpoint = new AtlasPrivateEndpointStack(app, 'atlas-private-endpoint-stack', {
-//   env
-// });

@@ -14,9 +14,7 @@ import {
   AtlasServerlessBasic,
   ServerlessInstanceProviderSettingsProviderName,
 } from 'awscdk-resources-mongodbatlas';
-
-
-import * as path from 'path';
+// import * as path from 'path';
 
 import {
   App, Stack, StackProps,
@@ -29,7 +27,7 @@ import {
 import { SubnetType } from 'aws-cdk-lib/aws-ec2';
 
 
-// This script will help you deploy a serverless atlas cluster
+// This script will help you deploy a landing zone in AWS
 
 export class MyLandingZoneStack extends cdk.Stack {
 

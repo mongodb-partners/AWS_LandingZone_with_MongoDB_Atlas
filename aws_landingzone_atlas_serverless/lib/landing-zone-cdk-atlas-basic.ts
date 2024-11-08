@@ -13,8 +13,6 @@ import {
   AtlasBasic,
 } from "awscdk-resources-mongodbatlas";
 
-import * as path from "path";
-
 import {
   App,
   Stack,
@@ -24,10 +22,10 @@ import {
   SecretValue,
   aws_secretsmanager as secretsmanager,
 } from "aws-cdk-lib";
+// import { SubnetType } from "aws-cdk-lib/aws-ec2";
+// import * as path from "path";
 
-import { SubnetType } from "aws-cdk-lib/aws-ec2";
-
-// This script will help you deploy a dedicated atlas cluster
+// This script will help you deploy a landing zone in AWS
 
 export class MyLandingZoneStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {

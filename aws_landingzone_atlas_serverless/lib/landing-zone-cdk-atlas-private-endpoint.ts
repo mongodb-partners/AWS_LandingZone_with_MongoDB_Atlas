@@ -12,8 +12,10 @@ import {
 import {
   aws_secretsmanager as secretsmanager,
 } from "aws-cdk-lib";
-import * as path from "path";
-import { SubnetType } from "aws-cdk-lib/aws-ec2";
+// import * as path from "path";
+// import { SubnetType } from "aws-cdk-lib/aws-ec2";
+
+// This script will help you deploy a landing zone in AWS
 
 export class MyLandingZoneStack extends cdk.Stack {
   public readonly vpc: ec2.Vpc;
@@ -177,10 +179,6 @@ export class AtlasPrivateEndpointStack extends cdk.Stack {
     props: cdk.StackProps
   ) {
     super(scope, id, props);
-
-    // const projectName = "LZ-Atlas-Dedicated-Private-Endpoint";
-    // const vpcId = this.node.tryGetContext('vpcId') ?? "null";
-    // const subnetId = this.node.tryGetContext('subnetId') ?? "null";
     const atlasProps = this.getContextProps()
     new secretsmanager.Secret(this, "DatabaseUserSecret", {
       generateSecretString: {
@@ -237,7 +235,7 @@ export class AtlasPrivateEndpointStack extends cdk.Stack {
     const profile = this.node.tryGetContext('profile') ?? 'development';
     const clusterName = this.node.tryGetContext('clusterName') ?? 'AtlasPvtEndpoint';
     const region = this.node.tryGetContext('region') ?? "US_EAST_1";
-    const ip = this.node.tryGetContext('ip') ?? "0.0.0.0/0";
+    const ip = this.node.tryGetContext('ip') ?? "<ENTER IP ADDRESS>";
     const vpcId = this.node.tryGetContext('vpcId') ?? "<ENTER YOUR VPC ID>";
     const subnetId = this.node.tryGetContext('subnetId') ?? "<ENTER YOUR SUBNET ID(s)>";
 
